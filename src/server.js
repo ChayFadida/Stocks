@@ -12,7 +12,7 @@ const authRouter = require('./routes/auth');
 const app = express();
 
 // user dependencies
-app.use(express.static('public'));
+app.use(express.static('../public'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
