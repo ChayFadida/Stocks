@@ -297,10 +297,11 @@ function fetchDataAndGenerateDropdown() {
 function handleRightClick(value) {
   var confirmed = confirm("Do you want to remove this item from the list?");
   if(confirmed){
+    
 
   }
   else{
-    
+
   }
 }
 
