@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ success: faslse, error: 'Invalid username or password' });
     }
-    const token = jwt.sign(user, "hello_world", { expiresIn: "1h" })
+    const token = jwt.sign(user, process.env.SECRET_JWT, { expiresIn: "1h" })
     res.cookie("token", token, { httpOnly: true });
     if (req.body.rememberMe) {
       res.cookie("username", username);

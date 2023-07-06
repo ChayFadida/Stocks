@@ -29,11 +29,12 @@
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:/?.,><])[A-Za-z\d!@#$%^&*()\-_=+\\|[\]{};:/?.,><]{6,}$/;
 		
-		if (!emailRegex.test(email) || !passwordRegex.test(password)) {
-			// Display an error message or perform other actions for invalid input
-			alert("Invalid email or password");
-			return;
-		}
+		// if (!emailRegex.test(email) || !passwordRegex.test(password)) {				for some reason this dont work with versel
+		// 	// Display an error message or perform other actions for invalid input
+		// 	alert("Invalid email or password");
+		// 	return;
+		// }
+
 		
 		const requestBody = JSON.stringify({ username, password });
 		

@@ -7,7 +7,7 @@ exports.cookieJwtAuth = (req, res, next) => {
         return res.redirect("/");
     }
     try {
-        const user = jwt.verify(token, process.env.JTW_SECRET);
+        const user = jwt.verify(token, process.env.SECRET_JWT);
         req.user = user;
         next();
     } catch (err) {
