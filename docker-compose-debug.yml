@@ -16,6 +16,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - API_KEY=${API_KEY}
+      - JTW_SECRET=${JTW_SECRET}
     command: sh -c "sleep 3 && node ./src/index.js"
     volumes:
       - ${PWD}:/data/app
