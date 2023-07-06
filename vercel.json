@@ -1,11 +1,10 @@
 {
   "rewrites": [
-    { "source": "./src/login", "destination": "/public/html/login.html" },
-    { "source": "./src/cool_route", "destination": "/public/html/cool.html" },
-    { "source": "/src/api/(.*)", "destination": "/api/graph/$1" },
-    { "source": "/(.*)", "destination": "/server.js" }
+    { "source": "/login", "destination": "/public/html/login.html" },
+    { "source": "/auth/(.*)", "destination": "/src/routes/auth.js" },
+    { "source": "/(.*)", "destination": "/src/server.js" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/server.js" }
+    { "src": "/(.*)", "dest": "/src/server.js" }
   ]
 }
