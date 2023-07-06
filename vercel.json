@@ -3,7 +3,7 @@
     "name": "stock-api",
     "builds": [
       {
-        "src": "*.js",
+        "src": "src/index.js",
         "use": "@vercel/node"
       }
     ],
