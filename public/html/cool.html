@@ -57,6 +57,28 @@
                     <span>Charts</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="logout()">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>LogOut</span></a>
+            </li>
+            <script>
+                function logout(event) {
+                    // Send an AJAX request to the server to clear the token cookie
+                    fetch('/auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Redirect to the desired location after successful logout
+                            window.location.href = "/";
+                        } else {
+                            alert('please try again');
+                        }
+                    })
+                }
+            </script>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -182,8 +204,8 @@
                                 <label for="timePeriod">Time Period</label>
                                 <option value="1min">1 Minute</option>
                                 <option value="5min">5 Minutes</option>
-                                <option value="1month">1 Week</option>
-                                <option value="3month">1 Month</option>
+                                <option value="1month">1 Month</option>
+                                <option value="3month">3 Month</option>
                             </select>
                         
                             <input type="hidden" name="choice" id="choice">
@@ -203,11 +225,10 @@
                                 }
                             </script>
                         </form>
-                        <div class="small mb-1">Dropdown Button Example:</div>
                         <div class="dropdown mb-4">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
+                                Favorites
                             </button>
                             <div class="dropdown-menu animated--fade-in" style="max-height: 200px; overflow-y: auto;"
                                 aria-labelledby="dropdownMenuButton" id="dynamicDropdown">
