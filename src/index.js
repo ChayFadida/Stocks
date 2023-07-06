@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/cool_route', cookieJwtAuth,(req, res) => {
-    res.sendFile(Path.join(__dirname, '../public/html/cool.html'));
+    res.sendFile(Path.join(__dirname,'../public/html/cool.html'));
 });
 
 app.post('/cool_route', cookieJwtAuth, coolRoute);
