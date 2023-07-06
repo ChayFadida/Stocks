@@ -49,8 +49,6 @@ router.post('/register', async (req, res) => {
   // Access the data from req.body
   try {
     const { username, password } = req.body;
-    console.log('username:', username);
-    console.log('password:', password);
     // Check if the username is already taken
     const checkQuery = 'SELECT * FROM users WHERE username = ?';
     connection.query(checkQuery, [username], (error, results) => {

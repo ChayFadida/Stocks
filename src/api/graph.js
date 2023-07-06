@@ -24,7 +24,6 @@ router.post('/stocks', (req, res) => {
       } else {
         // Data is successfully parsed as a JSON object
         console.log("api call successful");
-        console.log(filter);
         const metaData = Object.values(data)[0];
         const values = Object.values(data)[1]
         if (values === undefined || values === null) {
@@ -33,8 +32,6 @@ router.post('/stocks', (req, res) => {
         } else {
           const stockPrice = Object.values(values).map(obj => obj[filter]).reverse(); 
           const label = Object.keys(values).reverse()
-          console.log(label);
-          console.log(stockPrice);
           res.json({success: true, stockPrice : stockPrice, label : label, metaData: metaData});
       }
       }});
@@ -59,7 +56,6 @@ router.get('/stocks', (req, res) => {
       res.json({ success: false, statusCode: response.statusCode, error: response.body });
       // Data is successfully parsed as a JSON object
       console.log("api call successful");
-      console.log(filter);
       const metaData = Object.values(data)[0];
       const values = Object.values(data)[1]
       const stockPrice = Object.values(values).map(obj => obj[filter]).reverse();  //.map(//.map(item => parseFloat(item[info]));

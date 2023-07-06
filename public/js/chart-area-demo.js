@@ -142,7 +142,6 @@ window.addEventListener('stockDataReceived', function(event) {
 function fetchStockSuggestions(searchTerm) {
   var apiKey = 'YOUR_API_KEY'; // Replace with your Alpha Vantage API key
   var url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${searchTerm}&apikey=${apiKey}`;
-  console.log(url);
   fetch(url)
       .then(response => response.json())
       .then(data => {
