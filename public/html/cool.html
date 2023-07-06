@@ -69,14 +69,14 @@
                         method: 'POST',
                         credentials: 'include'
                     })
-                    .then(response => {
-                        if (response.ok) {
-                            // Redirect to the desired location after successful logout
-                            window.location.href = "/";
-                        } else {
-                            alert('please try again');
-                        }
-                    })
+                        .then(response => {
+                            if (response.ok) {
+                                // Redirect to the desired location after successful logout
+                                window.location.href = "/";
+                            } else {
+                                alert('please try again');
+                            }
+                        })
                 }
             </script>
             <!-- Divider -->
@@ -179,7 +179,7 @@
                     <!-- Content Row -->
                     <div class="row" style="flex-direction: column;">
 
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-10 col-lg-7" style="width: 100%;">
 
                             <!-- Area Chart -->
                             <div class="card shadow mb-4">
@@ -193,46 +193,52 @@
                                 </div>
                             </div>
                         </div>
-                        <form id="GetStockForm">
-                            <input type="hidden" name="choice" id="choice">
-                            <label for="stockSearch">Stock Search:</label>
-                            <input type="text" name="stockSearch" id="stockSearch">
-                            <div id="suggestionDropdown"></div>
-                        
-                            <input type="hidden" name="choice" id="choice">
-                            <select name="timePeriod" id="timePeriodSelect">
-                                <label for="timePeriod">Time Period</label>
-                                <option value="1min">1 Minute</option>
-                                <option value="5min">5 Minutes</option>
-                                <option value="1month">1 Month</option>
-                                <option value="3month">3 Month</option>
-                            </select>
-                        
-                            <input type="hidden" name="choice" id="choice">
-                            <select name="info" id="infoSelect">
-                                <label for="info">Info</label>
-                                <option value="1. open">Open</option>
-                                <option value="2. high">High</option>
-                                <option value="3. low">Low</option>
-                                <option value="4. close">Close</option>
-                            </select>
-                        
-                            <input type="submit" value="Submit" id="submitFormButton">
-                            <button type="button" onclick="refreshPage()" id="addToFavoritesButton">Add to Favorites</button>
-                            <script>
-                                function refreshPage() {
-                                    location.reload();
-                                }
-                            </script>
-                        </form>
-                        <div class="dropdown mb-4">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Favorites
-                            </button>
-                            <div class="dropdown-menu animated--fade-in" style="max-height: 200px; overflow-y: auto;"
-                                aria-labelledby="dropdownMenuButton" id="dynamicDropdown">
-                            </div>
+                        <div class="col-xl-10 col-lg-7" style="display: flex; flex-direction: row;">
+                            <form id="GetStockForm">
+                                <input type="hidden" name="choice" id="choice">
+                                <label for="stockSearch" class="text-primary">Stock Search:</label>
+                                <input type="text" name="stockSearch" id="stockSearch" class="text-primary">
+                                <div id="suggestionDropdown"></div>
+
+                                <input type="hidden" name="choice" id="choice">
+                                <select name="timePeriod" id="timePeriodSelect"
+                                class="btn btn-outline-primary dropdown-toggle">
+                                    <label for="timePeriod">Time Period</label>
+                                    <option value="1min">1 Minute</option>
+                                    <option value="5min">5 Minutes</option>
+                                    <option value="1month">1 Month</option>
+                                    <option value="3month">3 Month</option>
+                                </select>
+
+                                <input type="hidden" name="choice" id="choice">
+                                <select name="info" id="infoSelect"
+                                class="btn btn-outline-primary dropdown-toggle">
+                                    <label for="info">Info</label>
+                                    <option value="1. open">Open</option>
+                                    <option value="2. high">High</option>
+                                    <option value="3. low">Low</option>
+                                    <option value="4. close">Close</option>
+                                </select>
+
+                                <input type="submit" value="Submit" id="submitFormButton" class="btn btn-primary">
+                                <button type="button" onclick="refreshPage()" id="addToFavoritesButton" class="btn btn-outline-primary">
+                                    Add to
+                                    Favorites</button>
+                                <script>
+                                    function refreshPage() {
+                                        location.reload();
+                                    }
+                                </script>
+                                    <button class="btn btn-outline-primary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Favorites
+                                    </button>
+                                    <div class="dropdown-menu animated--fade-in"
+                                        style="max-height: 200px; overflow-y: auto;"
+                                        aria-labelledby="dropdownMenuButton" id="dynamicDropdown">
+                                    </div>
+                            </form>
                         </div>
                     </div>
 
