@@ -16,6 +16,12 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>	
 </head>
+<style>
+    body {
+      background-image: url('path/to/your-image.jpg');
+      background-size: cover; /* Adjust this property to fit your needs */
+    }
+  </style>
 <script>
 	// Function to handle login
 	function login(event) {
@@ -26,9 +32,11 @@
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:/?.,><])[A-Za-z\d!@#$%^&*()\-_=+\\|[\]{};:/?.,><]{6,}$/;
 		
-		if (passwordRegex.test(password) && emailRegex.test(username)) {
-			return;
-		}
+		// if (!emailRegex.test(email) || !passwordRegex.test(password)) {
+		// 	// Display an error message or perform other actions for invalid input
+		// 	console.log("Invalid email or password");
+		// 	return;
+		// }
 		
 		const requestBody = JSON.stringify({ username, password });
 		
