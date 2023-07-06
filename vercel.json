@@ -1,3 +1,12 @@
 {
-  "rewrites": [{ "source": "/", "destination": "/public/html/login.html" }]
+  "rewrites": [
+    { "source": "/login", "destination": "/public/html/login.html" },
+    { "source": "/cool_route", "destination": "/public/html/cool.html" },
+    { "source": "/api/(.*)", "destination": "/api/graph/$1" },
+    { "source": "/auth/(.*)", "destination": "/auth/$1" },
+    { "source": "/(.*)", "destination": "/server.js" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/server.js" }
+  ]
 }
