@@ -3,6 +3,7 @@ const router = express.Router();
 const Path = require('path');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { cookieJwtAuth } = require('../middleware/cookieJwtAuth');
 
 router.get('/login', (req, res) => {
   res.sendFile(Path.join(__dirname, '../../public/html/login.html'));
@@ -91,6 +92,11 @@ router.post('/register', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+router.post('/logout', cookieJwtAuth, async (req, res) => {
+  res.clearCookie('token'); // Clear the token cookie
+  res.sendStatus(200); // Send a success status code
 });
 
 module.exports = router;

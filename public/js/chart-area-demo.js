@@ -120,17 +120,6 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
-// function updateChart(data) {
-//   const chart = Chart.getChart("myAreaChart"); // Get a reference to the existing chart
-//   const bla =[0.5, 10000.5, 5000, 15000];
-//   const labels = Array.from({ length: bla.length }, (_, i) => `Label ${i + 1}`);
-//   if (chart) {
-//     chart.data.datasets[0].data = bla;
-//     chart.data.datasets[0].labels = labels;
-//     chart.update();
-//   }
-// }
-
 function updateChart(data) {
   const chart = myLineChart;
   const labels = data.label;
@@ -183,21 +172,21 @@ const stockSearchInput = document.getElementById('stockSearch');
 const suggestionDropdown = document.getElementById('suggestionDropdown');
 let searchTimeout;
 stockSearchInput.addEventListener('input', event => {
-const searchTerm = event.target.value.trim();
+    const searchTerm = event.target.value.trim();
 
-// Clear suggestion dropdown if the search box is empty
-if (searchTerm === '') {
-  suggestionDropdown.innerHTML = '';
-  return;
-}
+    // Clear suggestion dropdown if the search box is empty
+    if (searchTerm === '') {
+      suggestionDropdown.innerHTML = '';
+      return;
+    }
 
-// Clear previous search timeout if present
-clearTimeout(searchTimeout);
+    // Clear previous search timeout if present
+    clearTimeout(searchTimeout);
 
-// Set a timeout to delay the search API call
-searchTimeout = setTimeout(() => {
-  fetchStockSuggestions(searchTerm);
-}, 500);
+    // Set a timeout to delay the search API call
+    searchTimeout = setTimeout(() => {
+      fetchStockSuggestions(searchTerm);
+    }, 500);
 });
 
 
@@ -207,12 +196,15 @@ document.getElementById('addToFavoritesButton').addEventListener('click', functi
 
   const stock = document.getElementById('stockSearch').value;
   const timePeriod = document.getElementById('timePeriodSelect').value;
-  const info = document.getElementById('infoSelect').value;
+  //const info = document.getElementById('infoSelect').value;
+  const infoText = document.getElementById('infoSelect').options[document.getElementById('infoSelect').selectedIndex].text;
+  const timePeriodText = document.getElementById('timePeriodSelect').options[document.getElementById('timePeriodSelect').selectedIndex].text;
+
   // Create the stockDetails object with the necessary properties
   
 
   // Save the selected stock and its details to favorites
-  addToFavorites(stock, timePeriod, info);
+  addToFavorites(stock, timePeriodText, infoText);
 });
 
 function addToFavorites(stock, timePeriod, info) {
@@ -276,7 +268,7 @@ function fetchDataAndGenerateDropdown() {
     .then(response => response.json())
     .then(data => {
       // Extract the info from each favorite and add it to dynamicValues
-      dynamicValues = data.map(favorite => `${favorite.stock} ${favorite.time_period} ${favorite.stock}`);
+      dynamicValues = data.map(favorite => `${favorite.stock}, ${favorite.time_period}, ${favorite.info}`);
 
       // Generate dynamic dropdown items
       var dropdownMenu = document.getElementById('dynamicDropdown');
@@ -302,7 +294,6 @@ document.getElementById('submitFormButton').addEventListener('click', function(e
   var stockSearch = document.getElementById('stockSearch').value;
   var timePeriod = document.getElementById('timePeriodSelect').value;
   var info = document.getElementById('infoSelect').value;
-  
   if (stockSearch === "" || timePeriod === "" || info === "") {
       event.preventDefault(); // Prevent form submission
       alert('Please fill in all three values before submitting.');
@@ -319,4 +310,51 @@ document.getElementById('addToFavoritesButton').addEventListener('click', functi
       alert('Please fill in all three values before submitting.');
   }
 });
+
+
+document.addEventListener('click', function(event) {
+  var target = event.target;
+  if (target.classList.contains('dropdown-item')) {
+    var timePeriodOptions = {
+      '1min': '1 Minute',
+      '5min': '5 Minutes',
+      '1month': '1 Month',
+      '3month': '3 Month'    
+    };
+
+    var infoOptions = {
+      '1. open': 'Open',
+      '2. high': 'High',
+      '3. low': 'Low',
+      '4. close': 'Close'
+    };
+
+    var selectedValue = target.textContent;
+
+    // Extract the values from the selected option text
+    var values = selectedValue.split(', ');
+    // Populate the form fields with the extracted values
+    document.getElementById('stockSearch').value = values[0];
+    var savedInfoValue;
+    var savedTimePeriodValue;
+    for (var key in infoOptions) {
+      if (infoOptions[key] === values[2]) {
+        savedInfoValue = key;
+        break;
+      }
+    }
+    for (var key in timePeriodOptions) {
+      if (timePeriodOptions[key] === values[1]) {
+        savedTimePeriodValue = key;
+        break;
+      }
+    }
+    document.getElementById('infoSelect').value = savedInfoValue;
+    document.getElementById('timePeriodSelect').value = savedTimePeriodValue;
+
+  }
+});
+
+
+
 
