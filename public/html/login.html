@@ -32,7 +32,9 @@
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:/?.,><])[A-Za-z\d!@#$%^&*()\-_=+\\|[\]{};:/?.,><]{6,}$/;
 		
-		if (passwordRegex.test(password) && emailRegex.test(username)) {
+		if (!emailRegex.test(email) || !passwordRegex.test(password)) {
+			// Display an error message or perform other actions for invalid input
+			console.log("Invalid email or password");
 			return;
 		}
 		
