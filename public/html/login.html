@@ -16,9 +16,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>	
 </head>
-<style>
-	
-  </style>
 <script>
 	// Function to handle login
 	function login(event) {
@@ -34,6 +31,7 @@
 		// 	alert("Invalid email or password");
 		// 	return;
 		// }
+
 
 		
 		const requestBody = JSON.stringify({ username, password });
@@ -108,6 +106,7 @@ function rememberMe() {
 			<span class="create-account">Need to create an account? <a href="/auth/signup">Sign Up</a></span>
 			<span class="contact-us">Need help? <a href="/auth/contactus">Contact-us</a></span>
 		</form>
+
 	</div>
 </body>
 </html>

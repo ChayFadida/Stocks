@@ -9,6 +9,7 @@
 			const username = document.getElementById('email').value;
 			const password = document.getElementById('password').value;
 			const confirmPassword = document.getElementById('confirm-password').value;
+
 			// Check if the passwords match
 			if (password !== confirmPassword) {
 				alert('Passwords do not match. Please try again.');
@@ -38,6 +39,7 @@
 					if (data.success) {
 						alert(data.message);
 						window.location.href = '/auth/login';
+
 					} else {
 						alert('Failed to create an account. Please try again.');
 					}
