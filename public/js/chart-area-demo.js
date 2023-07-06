@@ -273,11 +273,18 @@ function fetchDataAndGenerateDropdown() {
       // Generate dynamic dropdown items
       var dropdownMenu = document.getElementById('dynamicDropdown');
       dynamicValues.forEach(function (value) {
-          var dropdownItem = document.createElement('a');
-          dropdownItem.classList.add('dropdown-item');
-          dropdownItem.href = '#';
-          dropdownItem.textContent = value;
-          dropdownMenu.appendChild(dropdownItem);
+        var dropdownItem = document.createElement('a');
+        dropdownItem.classList.add('dropdown-item');
+        dropdownItem.href = '#';
+        dropdownItem.textContent = value;
+
+        // Add event listener for right-click
+        dropdownItem.addEventListener('contextmenu', function (event) {
+          event.preventDefault();
+          handleRightClick(value);
+        });
+
+        dropdownMenu.appendChild(dropdownItem);
       });
     })
     .catch(error => {
@@ -285,6 +292,18 @@ function fetchDataAndGenerateDropdown() {
       // Handle the error as needed
     });
 }
+
+// Custom function to handle right-click action
+function handleRightClick(value) {
+  var confirmed = confirm("Do you want to remove this item from the list?");
+  if(confirmed){
+
+  }
+  else{
+    
+  }
+}
+
 
 // Call the fetch function when the page loads
 window.addEventListener('load', fetchDataAndGenerateDropdown);
