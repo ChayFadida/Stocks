@@ -1,10 +1,16 @@
 {
-    "rewrites": [
-      { "source": "/login", "destination": "/public/html/login.html" },
-      { "source": "/auth/(.*)", "destination": "/src/routes/auth.js" },
-      { "source": "/(.*)", "destination": "/src/server.js" }
+    "version": 2,
+    "name": "stock-api",
+    "builds": [
+      {
+        "src": "*.js",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "/src/server.js" }
+      {
+        "src": "/(.*)",
+        "dest": "/"
+      }
     ]
   }
