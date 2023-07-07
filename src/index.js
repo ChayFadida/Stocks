@@ -8,7 +8,7 @@ const coolRoute = require('./routes/cooler');
 const Path = require('path');
 const authRouter = require('./routes/auth');
 const apiRouter = require('./api/graph');
-
+require('dotenv').config();
 
 // Create an Express application
 const app = express();

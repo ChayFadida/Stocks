@@ -8,7 +8,7 @@ module.exports = () =>{
     password: process.env.MYSQL_ROOT_PASSWORD,
     database: process.env.MYSQL_DATABASE
   }
-
+  console.log(process.env.MYSQL_HOST)
   let con = null;
 
   // Connect to the database
