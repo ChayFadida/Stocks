@@ -1,11 +1,9 @@
 version: '3'
 services:
   app:
-    build:
-      dockerfile: Dockerfile.debug
+    build: .
     ports:
       - 8000:8000
-      - 9229:9229
     depends_on:
       - mysql_server
     restart: always

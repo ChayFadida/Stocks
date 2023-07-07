@@ -42,7 +42,7 @@ router.get('/stocks', (req, res) => {
   const { stockSymbol} = req.body;
   const apiKey = process.env.API_KEY;
   const apiFunction = "SYMBOL_SEARCH"
-  let url = `https://www.alphavantage.co/query?function=${apiFunction}&keywords=${stockSymbol}&apikey={apiKey}`;
+  let url = `https://www.alphavantage.co/query?function=${apiFunction}&keywords=${stockSymbol}&apikey=${apiKey}`;
   console.log(url);
   request.get({
     url: url,
