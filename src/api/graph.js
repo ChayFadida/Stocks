@@ -32,6 +32,7 @@ router.post('/stocks', (req, res) => {
         } else {
           const stockPrice = Object.values(values).map(obj => obj[filter]).reverse(); 
           const label = Object.keys(values).reverse()
+
           res.json({success: true, stockPrice : stockPrice, label : label, metaData: metaData});
       }
       }});
